@@ -12,14 +12,12 @@ namespace quiz_att_2
             string policy;
             int number;
             
-            
-
             primer = welcome();
 
             while(primer != EXIT){
                 number = policynumber();
                 policy = policytype();
-                defence(policy);
+                policy = defence(policy);
                 total = premium(policy);
                 System.Console.WriteLine($"Policy number:{number} is set to {policy} to the amount of ${total}");
                 primer = cont();   
@@ -45,13 +43,14 @@ namespace quiz_att_2
             policy = Console.ReadLine();
             return policy;
         }
-        static void defence(string policy){
+        static string defence(string policy){
             
             if(policy != "HEALTH" && policy != "AUTO"){
-                System.Console.WriteLine("You enter an invalad policy.");
-                policytype();
+                System.Console.WriteLine("You enter an invalad policy. Please enter either 'HEALTH' or 'AUTO'");
+                policy = Console.ReadLine();
                 
             }
+            return policy;
         }
         static int premium(string policyType){
             int HEALTH = 550;
